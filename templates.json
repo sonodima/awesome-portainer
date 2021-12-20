@@ -50,6 +50,74 @@
       "restart_policy": "always",
       "platform": "linux",
       "categories": ["tools", "network"]
+    },
+    {
+      "type": 1,
+      "title": "WireGuard",
+      "description": "WireGuard® is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.",
+      "image": "linuxserver/wireguard",
+      "name": "wireguard",
+      "logo": "https://raw.githubusercontent.com/sonodima/awesome-portainer/master/icons/wireguard.png",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "User ID",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "Group ID",
+          "default": "1000"
+        },
+        {
+          "name": "TZ",
+          "label": "Timezone",
+          "description": "Specify a timezone to use.",
+          "default": "Europe/London"
+        },
+        {
+          "name": "SERVERURL",
+          "label": "Server URL",
+          "description": "External IP or domain name for docker host.",
+          "default": "auto"
+        },
+        {
+          "name": "SERVERPORT",
+          "label": "Server Port",
+          "description": "External port for docker host.",
+          "default": "51820"
+        },
+        {
+          "name": "PEERS",
+          "label": "Peers",
+          "description": "Number (or alphanumeric names list) of peers to create confs for. Required for server mode."
+        },
+        {
+          "name": "INTERNAL_SUBNET",
+          "label": "Internal Subnet",
+          "description": "Internal subnet for the wireguard and server and peers.",
+          "default": "10.13.13.0"
+        },
+        {
+          "name": "ALLOWEDIPS",
+          "label": "Allowed IPs",
+          "description": "The IPs/Ranges that the peers will be able to reach using the VPN connection.",
+          "default": "0.0.0.0/0"
+        }
+      ],
+      "volumes": [
+        {
+          "bind": "/appdata/wireguard/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/lib/modules",
+          "container": "/lib/modules"
+        }
+      ],
+      "restart_policy": "always",
+      "platform": "linux",
+      "categories": ["tools", "network"]
     }
   ]
 }
