@@ -1,0 +1,56 @@
+{
+  "version": "2",
+  "templates": [
+    {
+      "type": 1,
+      "title": "Nginx Proxy Manager",
+      "description": "Nginx Proxy Manager enables you to easily forward to your websites running at home or otherwise, including free SSL.",
+      "image": "jc21/nginx-proxy-manager",
+      "name": "nginx-proxy-manager",
+      "logo": "https://raw.githubusercontent.com/sonodima/awesome-portainer/master/icons/nginx-proxy-manager.png",
+      "volumes": [
+        {
+          "bind": "/appdata/nginx-proxy-manager/data",
+          "container": "/data"
+        },
+        {
+          "bind": "/appdata/nginx-proxy-manager/letsencrypt",
+          "container": "/etc/letsencrypt"
+        }
+      ],
+      "ports": ["80:80/tcp", "81:81/tcp", "443:443/tcp"],
+      "restart_policy": "unless-stopped",
+      "platform": "linux",
+      "categories": ["tools", "network"]
+    },
+    {
+      "type": 1,
+      "title": "Cloudflare DDNS",
+      "description": "Cloudflare DDNS allows you to use the free Cloudflare DNS Service as a Dynamic DNS Provider.",
+      "image": "oznu/cloudflare-ddns",
+      "name": "cloudflare-ddns",
+      "logo": "https://raw.githubusercontent.com/sonodima/awesome-portainer/master/icons/cloudflare-ddns.png",
+      "env": [
+        {
+          "name": "API_KEY",
+          "label": "API Key",
+          "description": "Your Cloudflare scoped API token.",
+          "default": "/data/database.sqlite"
+        },
+        {
+          "name": "ZONE",
+          "label": "Zone",
+          "description": "The DNS zone that DDNS updates should be applied to."
+        },
+        {
+          "name": "SUBDOMAIN",
+          "label": "Subdomain",
+          "description": "A subdomain of the ZONE to write DNS changes to. If this is not supplied the root zone will be used."
+        }
+      ],
+      "restart_policy": "always",
+      "platform": "linux",
+      "categories": ["tools", "network"]
+    }
+  ]
+}
