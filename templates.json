@@ -34,8 +34,7 @@
         {
           "name": "API_KEY",
           "label": "API Key",
-          "description": "Your Cloudflare scoped API token.",
-          "default": "/data/database.sqlite"
+          "description": "Your Cloudflare scoped API token."
         },
         {
           "name": "ZONE",
