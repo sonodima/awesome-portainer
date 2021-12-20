@@ -118,6 +118,60 @@
       "restart_policy": "always",
       "platform": "linux",
       "categories": ["tools", "network"]
+    },
+    {
+      "type": 1,
+      "title": "WireGuard Easy",
+      "description": "WireGuard® is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography.",
+      "image": "weejewel/wg-easy",
+      "name": "wireguard-easy",
+      "logo": "https://raw.githubusercontent.com/sonodima/awesome-portainer/master/icons/wireguard.png",
+      "env": [
+        {
+          "name": "PASSWORD",
+          "label": "Password",
+          "description": "When set, requires a password when logging in to the Web UI."
+        },
+        {
+          "name": "WG_HOST",
+          "label": "Host",
+          "description": "The public hostname of your VPN server."
+        },
+        {
+          "name": "WG_PORT",
+          "label": "Port",
+          "description": "The public UDP port of your VPN server. WireGuard will always listen on 51820 inside the Docker container.",
+          "default": "51820"
+        },
+        {
+          "name": "WG_DEFAULT_ADDRESS",
+          "label": "Address Range",
+          "description": "Clients IP address range.",
+          "default": "10.8.0.x"
+        },
+        {
+          "name": "WG_DEFAULT_DNS",
+          "label": "DNS",
+          "description": "DNS server clients will use.",
+          "default": "1.1.1.1"
+        },
+        {
+          "name": "ALLOWEDIPS",
+          "label": "Allowed IPs",
+          "description": "The IPs/Ranges that the peers will be able to reach using the VPN connection.",
+          "default": "0.0.0.0/0"
+        }
+      ],
+      "volumes": [
+        {
+          "bind": "/appdata/wireguard-easy",
+          "container": "/etc/wireguard"
+        }
+      ],
+      "ports": ["51820:51820/udp", "51821:51821/tcp"],
+      "restart_policy": "always",
+      "platform": "linux",
+      "categories": ["tools", "network"]
     }
   ]
 }
